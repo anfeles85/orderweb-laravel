@@ -1,10 +1,10 @@
 @extends('templates.base')
-@section('title', 'Listado causales')
-@section('header', 'Listado causales')
+@section('title', 'Listado órdenes')
+@section('header', 'Listado órdenes')
 @section('content')
     <div class="row">
         <div class="col-lg-12 mb-4 d-grip gap-2 d-md-block">
-            <a href="{{ route('causal.create') }}" class="btn btn-primary">Crear</a>
+            <a href="{{ route('order.create') }}" class="btn btn-primary">Crear</a>
         </div>
     </div>
 
@@ -16,14 +16,22 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Descripción</th>
+                        <th>Fecha legalización</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Observación</th>
+                        <th>Causal</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Causal de prueba</td>
+                        <td>Orden de prueba</td>
+                        <td>Cra 1</td>
+                        <td>TULUA</td>
+                        <td>Ninguna</td>
+                        <td>Reparación contador</td>
                         <td>
                             <a href="#" title="editar" 
                                 class="btn btn-info btn-circle btn-sm">
