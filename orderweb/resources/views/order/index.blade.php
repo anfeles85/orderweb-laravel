@@ -25,25 +25,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Orden de prueba</td>
-                        <td>Cra 1</td>
-                        <td>TULUA</td>
-                        <td>Ninguna</td>
-                        <td>Reparación contador</td>
-                        <td>
-                            <a href="#" title="editar" 
-                                class="btn btn-info btn-circle btn-sm">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            <a href="#" title="eliminar" 
-                                class="btn btn-danger btn-circle btn-sm" 
-                                onclick="return remove()">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach ($orders as $order) 
+                        <tr>
+                            <td>{{ $order['id'] }}</td>
+                            <td>{{ $order['legalization_date'] }}</td>
+                            <td>{{ $order['address'] }}</td>
+                            <td>{{ $order['city'] }}</td>
+                            <td>{{ optional($order->observation)->description ?? '' }}</td>
+                            <td>{{ optional($order->causal)->description ?? '' }}</td>
+                            <td>
+                                <a href="{{ route('order.edit', $order['id']) }}" title="editar" 
+                                    class="btn btn-info btn-circle btn-sm">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="{{ route('order.destroy', $order['id']) }}" title="eliminar" 
+                                    class="btn btn-danger btn-circle btn-sm" 
+                                    onclick="return remove()">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
