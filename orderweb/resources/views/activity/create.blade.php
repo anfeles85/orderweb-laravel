@@ -11,12 +11,14 @@
                     <div class="col-lg-6 mb-4">
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control" 
-                        id="description" name="description" required>
+                        id="description" name="description" required 
+                        value="{{ old('description') }}">
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="hours">Horas estimadas</label>
                         <input type="number" class="form-control" 
-                        id="hours" name="hours" required>
+                        id="hours" name="hours" required
+                        value="{{ old('hours') }}">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -26,7 +28,8 @@
                             class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($technicians as $technician)
-                                <option value="{{ $technician['document'] }}">
+                                <option value="{{ $technician['document'] }}"
+                                @if(old('technician_id') == $technician['document']) selected @endif >
                                     {{ $technician['name'] }}
                                 </option>
                             @endforeach
@@ -37,7 +40,8 @@
                         <select name="type_id" id="type_id" class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach ($types as $type)
-                                <option value="{{ $type['id'] }}">
+                                <option value="{{ $type['id'] }}" 
+                                @if(old('type_id') == $type['id']) selected @endif >
                                     {{ $type['description'] }}
                                 </option>
                             @endforeach
